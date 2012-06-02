@@ -8,7 +8,7 @@ require 'testcase'
 require 'home_page'
 require 'article_page'
 
-class TestNavigation < TestCase
+class SmokeTest < TestCase
   
   def test_wikipedia_title
     home = HomePage.new(playground_browser)

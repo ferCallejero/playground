@@ -11,13 +11,13 @@ require 'article_page'
 class TestNavigation < TestCase
   
   def test_wikipedia_title
-    home = HomePage.new(@browser)
+    home = HomePage.new(playground_browser)
     home.goto
-    assert @browser.title.include? "Wikipedia"
+    assert home.page_title.include? "Wikipedia"
   end
   
   def test_wikiedia_search
-    home = HomePage.new(@browser)
+    home = HomePage.new(playground_browser)
     home.goto
     article = home.search('uruguay')
     assert article.title == "Uruguay"

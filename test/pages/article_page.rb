@@ -1,10 +1,6 @@
-require 'page-object'
-require "selenium-webdriver"
+require 'page'
 
-require 'playground'
-
-class ArticlePage
-  include PageObject
+class ArticlePage < Page
  
   h1(:title, :id => 'firstHeading')
   

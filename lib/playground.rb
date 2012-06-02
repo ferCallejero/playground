@@ -4,6 +4,7 @@ require "selenium-webdriver"
 class PlayGround
   include Singleton
   
+  
   attr_accessor :browser
   
   private
@@ -29,7 +30,7 @@ class PlayGround
     when 'safari'
       create_safari_browser
     else
-    puts 'Wrong Browser'
+    puts 'Wrong Browser selected'
     end
   end
   

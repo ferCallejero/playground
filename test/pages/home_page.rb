@@ -1,8 +1,6 @@
-require 'page-object'
-require "selenium-webdriver"
+require 'page'
 
-class HomePage
-  include PageObject
+class HomePage < Page
  
   page_url 'http://en.wikipedia.org'
   text_field(:txtSearch, :id => 'searchInput')
@@ -11,6 +9,6 @@ class HomePage
   def search(criteria)
     self.txtSearch= criteria
     self.buttonSearch
-    @article = ArticlePage.new(PlayGround.instance.browser)
+    @article = ArticlePage.new(@browser)
   end
 end

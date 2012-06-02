@@ -25,8 +25,8 @@ Playground is a simple automation framework for ruby based on Selenium Webdriver
   class SmokeTest < TestCase
    def test_wikipedia_title
     home = HomePage.new(playground_browser)
-    	home.goto
-    	assert home.page_title.include? "Wikipedia"
+    home.goto
+    assert home.page_title.include? "Wikipedia"
   end
   
    def test_wikiedia_search

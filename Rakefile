@@ -5,12 +5,12 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "playground"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "A ruby gem for using selenium webdriver"
+    gem.description = "Selenium Webdriver testing framework for web automation"
     gem.email = "santi84@gmail.com"
     gem.homepage = "http://github.com/santius/playground"
     gem.authors = ["Santiago Hernandez"]
-    gem.add_development_dependency "thoughtbot-shoulda"
+    # gem.add_development_dependency "thoughtbot-shoulda"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError

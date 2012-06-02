@@ -1,28 +1,26 @@
 require 'rubygems'
-require 'test/unit'
-require 'page-object'
-require 'pages/home_page'
-require 'pages/article_page'
-require 'page-object/page_factory'
 
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '.', 'pages'))
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
-require 'playground'
+require 'testcase'
+require 'home_page'
+require 'article_page'
 
-class TestNavigation < Test::Unit::TestCase
+class TestNavigation < TestCase
   
-   def test_google_search
-    PlayGround.instance
-    PlayGround.instance.setup('firefox')
-    PlayGround.instance.set_implicit_wait(30)
-    
-    home = HomePage.new(PlayGround.instance.browser)
+  def test_wikipedia_title
+    home = HomePage.new(@browser)
     home.goto
-    article = home.search('uruguay')
-    
-    assert article.title == "Uruguay"
+    assert @browser.title.include? "Wikipedia"
   end
   
-  
+  def test_wikiedia_search
+    home = HomePage.new(@browser)
+    home.goto
+    article = home.search('uruguay')
+    assert article.title == "Uruguay"
+  end
+
 end

@@ -3,8 +3,10 @@ require "selenium-webdriver"
 
 class PlayGround
   include Singleton
+  
   attr_accessor :browser
   
+  private
   def create_firefox_driver
     @browser = Selenium::WebDriver.for :firefox
   end
@@ -17,12 +19,9 @@ class PlayGround
     @browser = Selenium::WebDriver.for :safari
   end
 
-  def set_implicit_wait(seconds_to_wait)
-    @browser.manage.timeouts.implicit_wait = seconds_to_wait
-  end
-
-  def setup(browser)
-    case browser
+  public
+  def create_browser(browser_name)
+    case browser_name
     when 'firefox'
       create_firefox_driver
     when 'opera'
@@ -33,4 +32,13 @@ class PlayGround
     puts 'Wrong Browser'
     end
   end
+  
+  def set_implicit_wait(seconds_to_wait)
+    @browser.manage.timeouts.implicit_wait = seconds_to_wait
+  end
+  
+  def quit
+    @browser.quit
+  end
+  
 end

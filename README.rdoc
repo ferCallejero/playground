@@ -4,29 +4,25 @@ Playground is a simple automation framework for ruby based on Selenium Webdriver
 
 == Example page definitions
 
-class HomePage < Page
- 
-  page_url 'http://en.wikipedia.org'
-  text_field(:txtSearch, :id => 'searchInput')
-  button(:buttonSearch, :id => 'searchButton')
+	class HomePage < Page
+  	page_url 'http://en.wikipedia.org'
+  	text_field(:txtSearch, :id => 'searchInput')
+  	button(:buttonSearch, :id => 'searchButton')
   
-  def search(criteria)
+  	def search(criteria)
     self.txtSearch= criteria
     self.buttonSearch
     @article = ArticlePage.new(@browser)
-  end
-end
+  	end
+	end
 
-class ArticlePage < Page
- 
-  h1(:title, :id => 'firstHeading')
-  
-end
+	class ArticlePage < Page
+  	h1(:title, :id => 'firstHeading')
+	end
 
 == Example test
 
 	class SmokeTest < TestCase
-  
   	def test_wikipedia_title
     	home = HomePage.new(playground_browser)
     	home.goto
@@ -39,7 +35,6 @@ end
     	article = home.search('uruguay')
     	assert article.title == "Uruguay"
   	end
-
 	end
 
 

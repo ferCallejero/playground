@@ -6,7 +6,7 @@
 <head>
   <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
 
-  <title>File: README.rdoc [playground ]</title>
+  <title>File: README.rdoc [playground 0.0.0]</title>
 
   <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
 
@@ -60,7 +60,11 @@
 
         <ul class="link-list">
         
+          <li><a href="./Page.html">Page</a></li>
+        
           <li><a href="./PlayGround.html">PlayGround</a></li>
+        
+          <li><a href="./TestCase.html">TestCase</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -74,7 +78,47 @@
     
 <h1>playground</h1>
 
-<p>Description goes here.</p>
+<p>Playground is a simple automation framework for ruby based on Selenium
+Webdriver</p>
+
+<h2>Example page definitions</h2>
+
+<p>“`ruby</p>
+
+<pre>class HomePage &lt; Page
+ page_url 'http://en.wikipedia.org'
+ text_field(:txtSearch, :id =&gt; 'searchInput')
+ button(:buttonSearch, :id =&gt; 'searchButton')
+
+ def search(criteria)
+  self.txtSearch= criteria
+  self.buttonSearch
+  @article = ArticlePage.new(@browser)
+ end
+end</pre>
+
+<p>“`</p>
+
+<pre>class ArticlePage &lt; Page
+ h1(:title, :id =&gt; 'firstHeading')
+end</pre>
+
+<h2>Example test</h2>
+
+<pre>class SmokeTest &lt; TestCase
+ def test_wikipedia_title
+  home = HomePage.new(playground_browser)
+  home.goto
+  assert home.page_title.include? &quot;Wikipedia&quot;
+end
+
+ def test_wikiedia_search
+  home = HomePage.new(playground_browser)
+  home.goto
+  article = home.search('uruguay')
+  assert article.title == &quot;Uruguay&quot;
+ end
+end</pre>
 
 <h2>Note on Patches/Pull Requests</h2>
 <ul><li>

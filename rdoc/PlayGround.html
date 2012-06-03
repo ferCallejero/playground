@@ -65,15 +65,13 @@
         <h3 class="section-header">Methods</h3>
         <ul class="link-list">
           
-          <li><a href="#method-i-create_firefox_driver">#create_firefox_driver</a></li>
+          <li><a href="#method-i-create_browser">#create_browser</a></li>
           
-          <li><a href="#method-i-create_opera_driver">#create_opera_driver</a></li>
+          <li><a href="#method-i-quit">#quit</a></li>
           
-          <li><a href="#method-i-create_safari_driver">#create_safari_driver</a></li>
+          <li><a href="#method-i-reset-21">#reset!</a></li>
           
           <li><a href="#method-i-set_implicit_wait">#set_implicit_wait</a></li>
-          
-          <li><a href="#method-i-setup">#setup</a></li>
           
         </ul>
       </div>
@@ -122,7 +120,11 @@
 
         <ul class="link-list">
         
+          <li><a href="./Page.html">Page</a></li>
+        
           <li><a href="./PlayGround.html">PlayGround</a></li>
+        
+          <li><a href="./TestCase.html">TestCase</a></li>
         
         </ul>
         <div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -181,13 +183,13 @@
         <h3 class="section-header">Public Instance Methods</h3>
 
       
-        <div id="create_firefox_driver-method" class="method-detail ">
-          <a name="method-i-create_firefox_driver"></a>
+        <div id="create_browser-method" class="method-detail ">
+          <a name="method-i-create_browser"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">create_firefox_driver</span><span
-              class="method-args">()</span>
+            <span class="method-name">create_browser</span><span
+              class="method-args">(browser_name)</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
           
@@ -198,28 +200,37 @@
             
 
             
-            <div class="method-source-code" id="create_firefox_driver-source">
+            <div class="method-source-code" id="create_browser-source">
 <pre>
-<span class="ruby-comment"># File lib/playground.rb, line 8</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_firefox_driver</span>
-  <span class="ruby-ivar">@browser</span> = <span class="ruby-constant">Selenium</span><span class="ruby-operator">::</span><span class="ruby-constant">WebDriver</span>.<span class="ruby-identifier">for</span> <span class="ruby-value">:firefox</span>
+<span class="ruby-comment"># File lib/playground.rb, line 24</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_browser</span>(<span class="ruby-identifier">browser_name</span>)
+  <span class="ruby-keyword">case</span> <span class="ruby-identifier">browser_name</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'firefox'</span>
+    <span class="ruby-identifier">create_firefox_driver</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'opera'</span>
+    <span class="ruby-identifier">create_opera_driver</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'safari'</span>
+    <span class="ruby-identifier">create_safari_browser</span>
+  <span class="ruby-keyword">else</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">'Wrong Browser selected'</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- create_firefox_driver-source -->
+            </div><!-- create_browser-source -->
             
           </div>
 
           
 
           
-        </div><!-- create_firefox_driver-method -->
+        </div><!-- create_browser-method -->
 
       
-        <div id="create_opera_driver-method" class="method-detail ">
-          <a name="method-i-create_opera_driver"></a>
+        <div id="quit-method" class="method-detail ">
+          <a name="method-i-quit"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">create_opera_driver</span><span
+            <span class="method-name">quit</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -231,28 +242,28 @@
             
 
             
-            <div class="method-source-code" id="create_opera_driver-source">
+            <div class="method-source-code" id="quit-source">
 <pre>
-<span class="ruby-comment"># File lib/playground.rb, line 12</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_opera_driver</span>
-  <span class="ruby-ivar">@browser</span> = <span class="ruby-constant">Selenium</span><span class="ruby-operator">::</span><span class="ruby-constant">WebDriver</span>.<span class="ruby-identifier">for</span> <span class="ruby-value">:opera</span>
+<span class="ruby-comment"># File lib/playground.rb, line 54</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">quit</span>
+  <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">quit</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- create_opera_driver-source -->
+            </div><!-- quit-source -->
             
           </div>
 
           
 
           
-        </div><!-- create_opera_driver-method -->
+        </div><!-- quit-method -->
 
       
-        <div id="create_safari_driver-method" class="method-detail ">
-          <a name="method-i-create_safari_driver"></a>
+        <div id="reset-21-method" class="method-detail ">
+          <a name="method-i-reset-21"></a>
 
           
           <div class="method-heading">
-            <span class="method-name">create_safari_driver</span><span
+            <span class="method-name">reset!</span><span
               class="method-args">()</span>
             <span class="method-click-advice">click to toggle source</span>
           </div>
@@ -264,20 +275,29 @@
             
 
             
-            <div class="method-source-code" id="create_safari_driver-source">
+            <div class="method-source-code" id="reset-21-source">
 <pre>
-<span class="ruby-comment"># File lib/playground.rb, line 16</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_safari_driver</span>
-  <span class="ruby-ivar">@browser</span> = <span class="ruby-constant">Selenium</span><span class="ruby-operator">::</span><span class="ruby-constant">WebDriver</span>.<span class="ruby-identifier">for</span> <span class="ruby-value">:safari</span>
+<span class="ruby-comment"># File lib/playground.rb, line 41</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">reset!</span>
+  <span class="ruby-comment"># Use instance variable directly so we avoid starting the browser just to reset the session</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@browser</span>
+    <span class="ruby-keyword">begin</span> <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">manage</span>.<span class="ruby-identifier">delete_all_cookies</span>
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">Selenium</span><span class="ruby-operator">::</span><span class="ruby-constant">WebDriver</span><span class="ruby-operator">::</span><span class="ruby-constant">Error</span><span class="ruby-operator">::</span><span class="ruby-constant">UnhandledError</span>
+      <span class="ruby-comment"># delete_all_cookies fails when we've previously gone</span>
+      <span class="ruby-comment"># to about:blank, so we rescue this error and do nothing</span>
+      <span class="ruby-comment"># instead.</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">navigate</span>.<span class="ruby-identifier">to</span>(<span class="ruby-string">'about:blank'</span>)
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
-            </div><!-- create_safari_driver-source -->
+            </div><!-- reset-21-source -->
             
           </div>
 
           
 
           
-        </div><!-- create_safari_driver-method -->
+        </div><!-- reset-21-method -->
 
       
         <div id="set_implicit_wait-method" class="method-detail ">
@@ -299,7 +319,7 @@
             
             <div class="method-source-code" id="set_implicit_wait-source">
 <pre>
-<span class="ruby-comment"># File lib/playground.rb, line 20</span>
+<span class="ruby-comment"># File lib/playground.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_implicit_wait</span>(<span class="ruby-identifier">seconds_to_wait</span>)
   <span class="ruby-ivar">@browser</span>.<span class="ruby-identifier">manage</span>.<span class="ruby-identifier">timeouts</span>.<span class="ruby-identifier">implicit_wait</span> = <span class="ruby-identifier">seconds_to_wait</span>
 <span class="ruby-keyword">end</span></pre>
@@ -311,48 +331,6 @@
 
           
         </div><!-- set_implicit_wait-method -->
-
-      
-        <div id="setup-method" class="method-detail ">
-          <a name="method-i-setup"></a>
-
-          
-          <div class="method-heading">
-            <span class="method-name">setup</span><span
-              class="method-args">(browser)</span>
-            <span class="method-click-advice">click to toggle source</span>
-          </div>
-          
-
-          <div class="method-description">
-            
-            
-            
-
-            
-            <div class="method-source-code" id="setup-source">
-<pre>
-<span class="ruby-comment"># File lib/playground.rb, line 24</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">setup</span>(<span class="ruby-identifier">browser</span>)
-  <span class="ruby-keyword">case</span> <span class="ruby-identifier">browser</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">'firefox'</span>
-    <span class="ruby-identifier">create_firefox_driver</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">'opera'</span>
-    <span class="ruby-identifier">create_opera_driver</span>
-  <span class="ruby-keyword">when</span> <span class="ruby-string">'safari'</span>
-    <span class="ruby-identifier">create_safari_browser</span>
-  <span class="ruby-keyword">else</span>
-  <span class="ruby-identifier">puts</span> <span class="ruby-string">'Wrong Browser'</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-            </div><!-- setup-source -->
-            
-          </div>
-
-          
-
-          
-        </div><!-- setup-method -->
 
       
       </div><!-- public-instance-method-details -->

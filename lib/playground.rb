@@ -1,12 +1,12 @@
 require 'singleton'
 require "selenium-webdriver"
 
+module PlayGround
 class PlayGround
   include Singleton
-  
-  
+
   attr_accessor :browser
-  
+
   private
   def create_firefox_driver
     @browser = Selenium::WebDriver.for :firefox
@@ -21,6 +21,7 @@ class PlayGround
   end
 
   public
+
   def create_browser(browser_name)
     case browser_name
     when 'firefox'
@@ -33,13 +34,14 @@ class PlayGround
     puts 'Wrong Browser selected'
     end
   end
-  
+
   def set_implicit_wait(seconds_to_wait)
     @browser.manage.timeouts.implicit_wait = seconds_to_wait
   end
-  
+
   def quit
     @browser.quit
   end
-  
+
+end
 end

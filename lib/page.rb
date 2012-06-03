@@ -1,6 +1,7 @@
 require 'page-object'
 require 'playground'
 
+module PlayGround
 class Page
   include PageObject
   
@@ -16,4 +17,5 @@ class Page
     @browser.switch_to.default_content(frame)
   end
   
+end
 end

@@ -10,6 +10,13 @@ begin
     gem.email = "santi84@gmail.com"
     gem.homepage = "http://github.com/santius/playground"
     gem.authors = ["Santiago Hernandez"]
+    gem.files = [
+      "lib/playground.rb",
+      "lib/testcase.rb",
+      "lib/page.rb"
+    ]
+    gem.require_paths = ["lib"]
+
     # gem.add_development_dependency "thoughtbot-shoulda"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

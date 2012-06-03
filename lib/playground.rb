@@ -2,11 +2,9 @@ require 'singleton'
 require "selenium-webdriver"
 
 class PlayGround
-  include Singleton
-
+  
   attr_accessor :browser
-
-  private
+ 
   def create_firefox_driver
     @browser = Selenium::WebDriver.for :firefox
   end
@@ -39,16 +37,39 @@ class PlayGround
   end
 
   def reset!
-    # Use instance variable directly so we avoid starting the browser just to reset the session
     if @browser
       begin @browser.manage.delete_all_cookies
       rescue Selenium::WebDriver::Error::UnhandledError
-        # delete_all_cookies fails when we've previously gone
-        # to about:blank, so we rescue this error and do nothing
-        # instead.
       end
       @browser.navigate.to('about:blank')
     end
+  end
+  
+  def page_title
+    @browser.title
+  end
+  
+  def switch_to_frame(frame)
+    @browser.switch_to.frame(frame)
+  end
+  
+  def switch_to_default_content
+    @browser.switch_to.default_content
+  end
+  
+  def source
+    @browser.page_source
+  end
+  
+  def current_url
+    @browser.current_url
+  end
+  
+  def within_frame(frame_id)
+    old_window = @browser.window_handle
+    @browser.switch_to.frame(frame_id)
+    yield
+    @browser.switch_to.window old_window
   end
   
   def quit

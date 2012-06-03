@@ -1,26 +1,8 @@
 require 'rubygems'
 require 'rake'
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "playground"
-    gem.summary = "A ruby gem for using selenium webdriver"
-    gem.description = "Selenium Webdriver testing framework for web automation"
-    gem.email = "santi84@gmail.com"
-    gem.homepage = "http://github.com/santius/playground"
-    gem.authors = ["Santiago Hernandez"]
-    gem.files = [
-      "lib/playground.rb",
-      "lib/testcase.rb",
-      "lib/page.rb"
-    ]
-    gem.require_paths = ["lib"]
-
-    # gem.add_development_dependency "thoughtbot-shoulda"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-end
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
@@ -42,7 +24,7 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
+
 
 task :default => :test
 

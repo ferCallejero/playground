@@ -1,7 +1,7 @@
+require 'rubygems'
 require 'page-object'
 require 'playground'
 
-module PlayGround
 class Page
   include PageObject
   
@@ -17,5 +17,12 @@ class Page
     @browser.switch_to.default_content(frame)
   end
   
-end
+  def source
+    @browser.page_source
+  end
+  
+  def current_url
+    @browser.current_url
+  end
+  
 end

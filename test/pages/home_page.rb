@@ -1,3 +1,4 @@
+require 'rubygems'
 require 'page'
 
 class HomePage < Page

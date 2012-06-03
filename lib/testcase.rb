@@ -2,7 +2,6 @@ require 'rubygems'
 require 'playground'
 require 'test/unit'
 
-module PlayGround
 class TestCase < Test::Unit::TestCase 
   
   # Starting browser before each test
@@ -20,5 +19,4 @@ class TestCase < Test::Unit::TestCase
     PlayGround.instance.browser
   end
   
-end
 end

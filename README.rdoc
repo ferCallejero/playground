@@ -4,6 +4,7 @@ Playground is a simple automation framework for ruby based on Selenium Webdriver
 
 == Example page definitions
 
+```ruby
   class HomePage < Page
    page_url 'http://en.wikipedia.org'
    text_field(:txtSearch, :id => 'searchInput')
@@ -15,7 +16,7 @@ Playground is a simple automation framework for ruby based on Selenium Webdriver
     @article = ArticlePage.new(@browser)
    end
   end
-
+```
   class ArticlePage < Page
    h1(:title, :id => 'firstHeading')
   end

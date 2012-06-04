@@ -10,6 +10,6 @@ class HomePage < Page
   def search(criteria)
     self.txtSearch= criteria
     self.buttonSearch
-    @article = ArticlePage.new(@browser)
+    article = ArticlePage.new(@browser)
   end
 end

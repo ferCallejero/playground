@@ -9,7 +9,7 @@ class TestCase < Test::Unit::TestCase
   # Starting browser before each test
   def setup    
     @playground = PlayGround.new
-    @playground.create_browser('firefox')
+    @playground.create_browser('safari_remote')
     @playground.set_implicit_wait(30)
   end
 
